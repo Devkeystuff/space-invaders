@@ -16,8 +16,20 @@ https://nodejs.org/en/
 
 Use python v3.10.x
 
+## React native
+
+Use react-native-cli v2.0.x
+
 ## Justfile
 For project management we're using `Justfile`
+
+### For windows:
+
+- Install [WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
+
+- Activate WSL
+    
+        wsl
 
     cargo install just
 
