@@ -1,4 +1,4 @@
-# Smart cooking app
+# Space invaders
 
 ## Git clone
 
@@ -6,40 +6,33 @@
 
 ## Installation
 
-### Node
-
-Use node v17.0.x
-
-https://nodejs.org/en/
-
-## Python
+### Python
 
 Use python v3.10.x
 
-## React native
+#### Black
 
-Use react-native-cli v2.0.x
+For formatting and installing dependencies
 
-## Justfile
-For project management we're using `Justfile`
+##### Installation
 
-### For windows:
+    pip install black
 
-- Install [WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
+## Actions
 
-- Activate WSL
+For code formatting and more concise dependency installation we're using `Makefile`
+
+### Install dependencies
     
-        wsl
+    make setup
+    
+### Start project
 
-    cargo install just
-
-Install dependencies
-
-    just setup
-
-Run project
-
-    just dev
+    make dev
+    
+### Format code
+    
+    make format
 
 ## Git rules
 
