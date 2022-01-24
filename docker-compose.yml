@@ -4,6 +4,7 @@ services:
   api:
     build: ./api
     container_name: api
+    restart: always
     volumes:
       - './api/:/srv/app'
       - 'static:/srv/app/static'
@@ -21,6 +22,6 @@ services:
       - postgres:/var/lib/postgres/data
 
 volumes:
-  db:
+  postgres:
   static:
   media:

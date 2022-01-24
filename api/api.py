@@ -2,12 +2,12 @@ from distutils.log import debug
 from fastapi import FastAPI
 from fastapi.params import Query
 import uvicorn
-import argparse
 import psycopg2
+from starlette.responses import Response
 
 from controllers.ControllerRequests import ControllerRequests
 
-from models.requests.RequestSaveResult import ResponseSaveResult
+from models.requests.RequestSaveResult import RequestSaveResult
 from models.requests.ResponseSaveResult import ResponseSaveResult
 
 app = FastAPI()
@@ -23,12 +23,25 @@ async def test_connection():
 
 
 @app.post("/results", response_model=ResponseSaveResult)
-async def post_results():
+async def post_results(points: int = Query(...), username: str = Query(...)):
+    response = None
     try:
-        ControllerRequests.save_result()
+        response = ResponseSaveResult()
+        response.is_success = True
+
+        print("test")
+
     except Exception as e:
         print(e)
+    # response: ResponseSaveResult = None
+    # try:
+    #     request_save_result = RequestSaveResult(points=points, username=username)
+    #     print(request_save_result)
+    #     response = await ControllerRequests.save_result(request_save_result)
+    # except Exception as e:
+    #     print(e)
+    return response
 
 
 if __name__ == "__main__":
-    uvicorn.run("api:app", port=8000, reload=True)
+    uvicorn.run("api:app", port=8000, reload=True, debug=True, workers=5)
