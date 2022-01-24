@@ -1,10 +1,10 @@
-# Make a class that contains static methods, like in ControllerRequests
+import psycopg2
 
 
 class ControllerDatabase:
-    def hello():
-        print("hello world")
-
     @staticmethod
     async def save_result():
+        conn = psycopg2.connect()
+        # with DbCursor as cursor:
+        # cursor
         print("saved")
