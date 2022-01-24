@@ -1,19 +1,17 @@
-# Get the official image
-FROM python:3.10.1-buster
+FROM python:3.10-buster
 
-# Set working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Copy requirements to working directory
-COPY requirements.txt .
+RUN apt-get update && apt-get install -y python3-opencv
+RUN pip install opencv-python
+RUN pip install --upgrade pip
 
-# For postgres configuration
-RUN apt-get -y install postgresql-12 postgresql-client
-RUN apt-get -y install python3-dev libpq-dev
-RUN apt-get update
+COPY ./requirements.txt .
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 8000
 
 COPY . .
 
-CMD [ "python", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD python api.py

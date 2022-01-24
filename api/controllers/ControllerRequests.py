@@ -1,14 +1,13 @@
-from models.requests.RequestUserRegister import RequestUserRegister
-from models.requests.ResponseUserRegister import ResponseUserRegister
+from models.requests.RequestSaveResult import RequestUserRegister
+from models.requests.ResponseSaveResult import ResponseUserRegister
+
+from controllers.ControllerDatabase import ControllerDatabase
+
 
 class ControllerRequests:
     @staticmethod
-    def register_user(request: RequestUserRegister) -> ResponseUserRegister:
-        response: ResponseUserRegister = None
+    def submit_result():
         try:
-            if ControllerRequests.validate_request(request, response):
-                print("")
-            else:
-                response.error_code = ErrorCode.incorrect_key
+            ControllerDatabase.save_result()
         except Exception as e:
-            print(e)
+            print(e, "ControllerRequests_submit_result")
