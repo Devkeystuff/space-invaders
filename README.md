@@ -2,7 +2,7 @@
 
 ## Git clone
 
-    git clone https://github.com/Devkeystuff/smart-cooking.git
+    git clone https://github.com/Devkeystuff/space-invaders.git
 
 ## Installation
 
