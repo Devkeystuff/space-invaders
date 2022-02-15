@@ -27,8 +27,11 @@ class ControllerDatabase:
                 cur.execute(
                     f"""INSERT INTO results ({', '.join(cols)}) VALUES ({', '.join(["'%s'" % values[i] for i in cols])}) RETURNING result_id"""
                 )
+                #
                 (result_id,) = cur.fetchone()
-
+                # python tuple, lidzigi kaa list, bet ar apalam iekavam 
+                # tuple datus nevar mainit, lista var mainit
+                # ()
         except Exception as e:
             print(e)
         return result_id
