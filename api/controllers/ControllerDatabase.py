@@ -10,7 +10,7 @@ from models.db.db_result import DbResult
 #RequestSaveResult datu tips lai saprastu kadaa formaa dati tiek izmantoti serveriiiiiiiiiiiii
 
 
-#class- nosaka db strukturu. class var saturt vairakus mainigus
+#class- nosaka db strukturu. class var saturt vairakus mainigus. isteniba class var but viskaut kas
 class ControllerDatabase:
     # statiska metode, kura pienem rezultatu db
     @staticmethod
