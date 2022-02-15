@@ -7,8 +7,10 @@ from models.requests.request_save_result import RequestSaveResult
 from models.requests.response_get_all_results import ResponseGetAllResults
 
 from models.db.db_result import DbResult
+#RequestSaveResult datu tips lai saprastu kadaa formaa dati tiek izmantoti serveriiiiiiiiiiiii
 
 
+#class- nosaka db strukturu. class var saturt vairakus mainigus
 class ControllerDatabase:
     # statiska metode, kura pienem rezultatu db
     @staticmethod
@@ -16,6 +18,7 @@ class ControllerDatabase:
         result_id = None
         try:
             cols = ["points", "username"]
+            # mainigais
             values = result.to_dict()
 
             with DbCursor() as cur:
