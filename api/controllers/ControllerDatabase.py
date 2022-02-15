@@ -10,6 +10,7 @@ from models.db.db_result import DbResult
 
 
 class ControllerDatabase:
+    # statiska metode, kura pienem rezultatu db
     @staticmethod
     async def save_result(result: RequestSaveResult) -> int:
         result_id = None
@@ -18,6 +19,8 @@ class ControllerDatabase:
             values = result.to_dict()
 
             with DbCursor() as cur:
+                # cur palidz komunicet ar db
+                # izsauca darbibas ar db
                 cur.execute(
                     f"""INSERT INTO results ({', '.join(cols)}) VALUES ({', '.join(["'%s'" % values[i] for i in cols])}) RETURNING result_id"""
                 )
