@@ -5,10 +5,13 @@ import uvicorn
 import psycopg2
 from starlette.responses import Response
 
+
 from controllers.ControllerRequests import ControllerRequests
 
-from models.requests.RequestSaveResult import RequestSaveResult
-from models.requests.ResponseSaveResult import ResponseSaveResult
+from models.requests.request_save_result import RequestSaveResult
+from models.requests.response_save_result import ResponseSaveResult
+from models.requests.response_get_all_results import ResponseGetAllResults
+from models.requests.request_get_all_results import RequestGetAllResults
 
 app = FastAPI()
 
@@ -17,29 +20,29 @@ app = FastAPI()
 async def test_connection():
     try:
         print("beep")
-        conn = psycopg2.connect()
+
     except Exception as e:
         print(e)
 
 
 @app.post("/results", response_model=ResponseSaveResult)
 async def post_results(points: int = Query(...), username: str = Query(...)):
-    response = None
+    response = ResponseSaveResult()
     try:
-        response = ResponseSaveResult()
-        response.is_success = True
-
-        print("test")
-
+        request_save_result = RequestSaveResult(points=points, username=username)
+        response = await ControllerRequests.save_result(request_save_result)
     except Exception as e:
         print(e)
-    # response: ResponseSaveResult = None
-    # try:
-    #     request_save_result = RequestSaveResult(points=points, username=username)
-    #     print(request_save_result)
-    #     response = await ControllerRequests.save_result(request_save_result)
-    # except Exception as e:
-    #     print(e)
+    return response
+
+
+@app.get("/results", response_model=ResponseGetAllResults)
+async def get_results():
+    response = ResponseGetAllResults()
+    try:
+        response.results = await ControllerRequests.get_all_results()
+    except Exception as e:
+        print(e)
     return response
 
 

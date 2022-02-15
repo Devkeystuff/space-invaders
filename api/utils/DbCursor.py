@@ -1,7 +1,10 @@
 import dotenv
 import psycopg2
-from dotenv import get_key, load_dotenv
+from dotenv import load_dotenv
 import os
+
+
+load_dotenv()
 
 DB = os.getenv("POSTGRES_DB")
 USER = os.getenv("POSTGRES_USER")
@@ -11,12 +14,8 @@ PASS = os.getenv("POSTGRES_PASSWORD")
 class DbCursor(object):
     def __init__(self) -> None:
         super().__init__()
-        load_dotenv()
         self.conn = psycopg2.connect(
-            f"dbname='{DB}' "
-            f"host='localhost' "
-            f"user='{USER}' "
-            f"password='{PASS}'"
+            f"dbname='{DB}' host='db' user='postgres' password='{PASS}'"
         )
         self.cursor = None
 
