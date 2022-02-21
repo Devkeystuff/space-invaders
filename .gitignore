@@ -33,6 +33,7 @@ yarn-error.log*
 # turbo
 .turbo
 
+venv
 env
 
 .idea

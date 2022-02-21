@@ -13,6 +13,8 @@ from models.requests.response_save_result import ResponseSaveResult
 from models.requests.response_get_all_results import ResponseGetAllResults
 from models.requests.request_get_all_results import RequestGetAllResults
 
+from pydantic import BaseModel
+
 app = FastAPI()
 
 
@@ -26,10 +28,12 @@ async def test_connection():
 
 
 @app.post("/results", response_model=ResponseSaveResult)
-async def post_results(points: int = Query(...), username: str = Query(...)):
+async def post_results(body: RequestSaveResult):
     response = ResponseSaveResult()
     try:
-        request_save_result = RequestSaveResult(points=points, username=username)
+        request_save_result = RequestSaveResult(
+            points=body.points, username=body.username
+        )
         response = await ControllerRequests.save_result(request_save_result)
     except Exception as e:
         print(e)

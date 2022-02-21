@@ -1,6 +1,7 @@
 setup:
 	@echo "Installing dependencies"
 	pip install black
+	python -m venv venv
 
 format:
 	@echo "Formatting app"
