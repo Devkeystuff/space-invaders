@@ -1,3 +1,4 @@
+#class var saturt vairakus vienada veida/tipa elementus/objektus, kuri izpilda konkretas funkcijas
 from controllers.ControllerDatabase import ControllerDatabase
 
 from models.requests.response_save_result import ResponseSaveResult
@@ -7,13 +8,13 @@ from models.requests.response_get_all_results import ResponseGetAllResults
 
 class ControllerRequests:
     @staticmethod
+    
     #dabu visus rezultatus
     async def save_result(request: RequestSaveResult) -> ResponseSaveResult:
-        #stradas sinhroni(vienlaikus) ar aplikaciju
+        #stradas sinhroni(vienlaikus) ar aplikaciju, savukart ja butu await, tad butu jagaida lidz kamer info atgriezisies no db
         result = None
         try:
             result = ResponseSaveResult()
-
             result.result_id = await ControllerDatabase.save_result(request)
             if result.result_id:
                 result.is_success = True
