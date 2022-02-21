@@ -7,7 +7,9 @@ from models.requests.response_get_all_results import ResponseGetAllResults
 
 class ControllerRequests:
     @staticmethod
+    #dabu visus rezultatus
     async def save_result(request: RequestSaveResult) -> ResponseSaveResult:
+        #stradas sinhroni(vienlaikus) ar aplikaciju
         result = None
         try:
             result = ResponseSaveResult()
