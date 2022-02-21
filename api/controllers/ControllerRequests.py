@@ -1,4 +1,4 @@
-#class var saturt vairakus vienada veida/tipa elementus/objektus, kuri izpilda konkretas funkcijas
+#class var saturt vairakus vienada veida/tipa elementus/objektus, kuri izpilda konkretas funkcijas ;)
 from controllers.ControllerDatabase import ControllerDatabase
 
 from models.requests.response_save_result import ResponseSaveResult
